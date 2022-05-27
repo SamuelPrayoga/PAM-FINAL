@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Kantin Del</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_cart">Keranjang</string>
+    <string name="title_account">Akun</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
