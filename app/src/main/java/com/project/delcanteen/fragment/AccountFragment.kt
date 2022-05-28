@@ -2,14 +2,11 @@ package com.project.delcanteen.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.SharedMemory
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import com.project.delcanteen.MainActivity
 import com.project.delcanteen.R
 import com.project.delcanteen.activity.LoginActivity
 import com.project.delcanteen.helper.SharedPref
