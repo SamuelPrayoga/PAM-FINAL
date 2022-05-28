@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_list_alamat.xml" value="0.1" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_pengiriman.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_tambah_alamat.xml" value="0.27447916666666666" />
         <entry key="..\:/3rd semester/PAM/BigProject/DelCanteen/DelCanteen/app/src/main/res/layout/activity_baru.xml" value="0.13020833333333334" />
         <entry key="..\:/3rd semester/PAM/BigProject/DelCanteen/DelCanteen/app/src/main/res/layout/activity_login.xml" value="0.17300724637681159" />
         <entry key="..\:/3rd semester/PAM/BigProject/DelCanteen/DelCanteen/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
@@ -22,6 +25,8 @@
         <entry key="..\:/KULIAH IT DEL/SEMESTER IV/PAM/TUGAS-BESAR-PAM/DelCanteen/app/src/main/res/layout/toolbar.xml" value="0.26875" />
         <entry key="..\:/KULIAH IT DEL/SEMESTER IV/PAM/TUGAS-BESAR-PAM/DelCanteen/app/src/main/res/layout/toolbar_custom.xml" value="0.26875" />
         <entry key="..\:/KULIAH IT DEL/SEMESTER IV/PAM/TUGAS-BESAR-PAM/DelCanteen/app/src/main/res/xml/config_network.xml" value="0.26875" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/ProyekKantin/app/src/main/res/layout/fragment_keranjang.xml" value="0.1" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/ProyekKantin/app/src/main/res/layout/item_keranjang.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -8,7 +8,7 @@ import com.project.delcanteen.model.Produk
 
 @Database(entities = [Produk::class] /* List model Ex:NoteModel */, version = 1)
 abstract class MyDatabase : RoomDatabase() {
-    abstract fun daoKeranjang(): DaoKeranjang // DaoNote
+    abstract fun daoKeranjang(): daoKeranjang // DaoNote
 
     companion object {
         private var INSTANCE: MyDatabase? = null
@@ -18,7 +18,7 @@ abstract class MyDatabase : RoomDatabase() {
                 synchronized(MyDatabase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        MyDatabase::class.java, "MyDatabase" // Database Name
+                        MyDatabase::class.java, "MyDatabase877" // Database Name
                     ).allowMainThreadQueries().build()
                 }
             }

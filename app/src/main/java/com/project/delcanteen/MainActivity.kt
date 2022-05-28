@@ -1,6 +1,9 @@
 package com.project.delcanteen
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.delcanteen.activity.LoginActivity
@@ -31,12 +35,20 @@ class MainActivity : AppCompatActivity() {
 
     private val  statusLogin = false
     private lateinit var s:SharedPref
+    private var dariDetail: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         s = SharedPref(this)
         setUpBottomNav()
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessage, IntentFilter("event:keranjang"))
+    }
+
+    val mMessage: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            dariDetail = true
+        }
     }
 
     fun setUpBottomNav(){
@@ -76,5 +88,12 @@ class MainActivity : AppCompatActivity() {
         menuItem.isChecked = true
         fm.beginTransaction().hide(active).show(fragment).commit()
         active = fragment
+    }
+    override fun onResume() {
+        if (dariDetail) {
+            dariDetail = false
+            callFragment(1, fragmentCart)
+        }
+        super.onResume()
     }
 }

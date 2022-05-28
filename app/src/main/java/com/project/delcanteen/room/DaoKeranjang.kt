@@ -5,13 +5,16 @@ import androidx.room.OnConflictStrategy.REPLACE
 import com.project.delcanteen.model.Produk
 
 @Dao
-interface DaoKeranjang {
+interface daoKeranjang {
 
     @Insert(onConflict = REPLACE)
     fun insert(data: Produk)
 
     @Delete
     fun delete(data: Produk)
+
+    @Delete
+    fun delete(data: List<Produk>)
 
     @Update
     fun update(data: Produk): Int
@@ -20,7 +23,10 @@ interface DaoKeranjang {
     fun getAll(): List<Produk>
 
     @Query("SELECT * FROM keranjang WHERE id = :id LIMIT 1")
-    fun getNote(id: Int): Produk
+    fun getProduk(id: Int): Produk
+
+    @Query("DELETE FROM keranjang WHERE id = :id")
+    fun deleteById(id: String): Int
 
     @Query("DELETE FROM keranjang")
     fun deleteAll(): Int
