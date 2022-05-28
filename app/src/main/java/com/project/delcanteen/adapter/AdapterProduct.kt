@@ -12,12 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.project.delcanteen.R
 import com.project.delcanteen.activity.DetailProdukActivity
-import com.project.delcanteen.activity.LoginActivity
 import com.project.delcanteen.helper.Helper
 import com.project.delcanteen.model.Produk
+import com.project.delcanteen.util.Config
 import com.squareup.picasso.Picasso
-import java.text.NumberFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class AdapterProduct(var activity: Activity,var data:ArrayList<Produk>):RecyclerView.Adapter<AdapterProduct.Holder>() {
@@ -43,7 +41,7 @@ class AdapterProduct(var activity: Activity,var data:ArrayList<Produk>):Recycler
         holder.tvHarga.text = Helper().changeRupiah(data[position].harga)
         //holder.imgProduk.setImageResource(data[position].image)
 
-        val image = "http://192.168.8.131/kantindel/public/storage/produk/" + data[position].image
+        val image = Config.productUrl + data[position].image
         Picasso.get()
             .load(image)
             .placeholder(R.drawable.product)
