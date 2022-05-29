@@ -1,10 +1,11 @@
 package com.project.delcanteen.activity
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.project.delcanteen.R
 import com.project.delcanteen.helper.Helper
+import kotlinx.android.synthetic.main.activity_pengiriman.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
 
 class PengirimanActivity : AppCompatActivity(){
