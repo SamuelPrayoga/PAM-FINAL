@@ -30,6 +30,7 @@
         <activity android:name="com.project.delcanteen.activity.MasukActivity" />
         <activity android:name="com.project.delcanteen.activity.RegisterActivity" />
         <activity android:name=".activity.DetailProdukActivity" />
+        <activity android:name=".activity.PengirimanActivity" />
 
     </application>
 

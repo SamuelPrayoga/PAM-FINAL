@@ -1,5 +1,6 @@
 package com.project.delcanteen.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.delcanteen.R
+import com.project.delcanteen.activity.PengirimanActivity
 import com.project.delcanteen.adapter.AdapterKeranjang
 import com.project.delcanteen.helper.Helper
 import com.project.delcanteen.helper.SharedPref
@@ -93,7 +95,7 @@ class CartFragment : Fragment() {
         }
 
         btnBayar.setOnClickListener {
-
+            startActivity(Intent(requireActivity(), PengirimanActivity::class.java))
         }
 
         cbAll.setOnClickListener {

@@ -8,7 +8,9 @@ import android.view.View
 import com.project.delcanteen.R
 import com.project.delcanteen.helper.Helper
 import com.project.delcanteen.room.MyDatabase
+import kotlinx.android.synthetic.main.activity_list_alamat.*
 import kotlinx.android.synthetic.main.activity_pengiriman.*
+import kotlinx.android.synthetic.main.activity_pengiriman.btn_tambahAlamat
 import kotlinx.android.synthetic.main.toolbar_custom.*
 
 class PengirimanActivity : AppCompatActivity(){
@@ -43,7 +45,7 @@ class PengirimanActivity : AppCompatActivity(){
 
     private fun mainButton(){
         btn_tambahAlamat.setOnClickListener{
-            startActivity(Intent(this, ListAlamatActivity::class.java))
+            startActivity(Intent(this, TambahAlamatActivity::class.java))
         }
     }
 
