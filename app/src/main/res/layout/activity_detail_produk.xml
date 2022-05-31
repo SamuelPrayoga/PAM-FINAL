@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
                     android:background="@color/white"
-                    android:src="@drawable/hp_pavilion_13_an0006na" />
+                    android:src="@drawable/product" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
