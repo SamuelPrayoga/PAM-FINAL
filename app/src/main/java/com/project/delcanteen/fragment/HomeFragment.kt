@@ -43,9 +43,9 @@ class HomeFragment : Fragment() {
     }
     fun displayProduk(){
         var arrSlider = ArrayList<Int>()
-        arrSlider.add(R.drawable.slider1)
-        arrSlider.add(R.drawable.slider2)
-        arrSlider.add(R.drawable.slider3)
+        arrSlider.add(R.drawable.odol)
+        arrSlider.add(R.drawable.slider5)
+        arrSlider.add(R.drawable.slider6)
 
         val adapterSlider = AdapterSlider(arrSlider,activity)
         vpSlider.adapter = adapterSlider

@@ -28,7 +28,7 @@
             android:text="Nama Produk"/>
 
         <TextView
-            android:textColor="@color/orange"
+            android:textColor="@color/Pallete3"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginVertical="8dp"
