@@ -113,8 +113,7 @@ class DetailProdukActivity : AppCompatActivity() {
             .resize(400, 400)
             .into(image)
 
-        // setToolbar
-        Helper().setToolbar(this, toolbar, produk.name)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
