@@ -1,6 +1,7 @@
 package com.project.delcanteen.app
 
 import com.project.delcanteen.model.ResponModel
+import com.project.delcanteen.model.rajaongkir.ResponOngkir
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -27,17 +28,29 @@ interface ApiService {
     @GET("produk")
     fun getProduk(): Call<ResponModel>
 
-    @GET("provinsi")
-    fun getProvinsi(): Call<ResponModel>
+    @GET("province")
+    fun getProvinsi(
+        @Header("key") key :String,
+    ): Call<ResponModel>
 
-    @GET("kota")
+    @GET("city")
     fun getKota(
-        @Query("id_provinsi") id: Int
+        @Query("province") id: String,
+        @Header("key") key :String
     ): Call<ResponModel>
 
     @GET("kecamatan")
     fun getKecamatan(
         @Query("id_kota") id: Int
     ): Call<ResponModel>
+
+    @POST("cost")
+    fun ongkir(
+        @Header("key") key :String,
+        @Field("origin") origin :String,
+        @Field("destination") destination :String,
+        @Field("weight") weight :Int,
+        @Field("courier") courier :String
+    ):Call<ResponOngkir>
 
 }

@@ -2,6 +2,7 @@ package com.project.delcanteen.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class AdapterProduct(var activity: Activity,var data:ArrayList<Produk>):Recycler
     class Holder(view: View):RecyclerView.ViewHolder(view){
         val tvNama = view.findViewById<TextView>(R.id.tv_nama_product)
         val tvHarga = view.findViewById<TextView>(R.id.tv_harga)
+        val tvHargaAsli = view.findViewById<TextView>(R.id.tv_hargaAsli)
         val imgProduk = view.findViewById<ImageView>(R.id.img_product)
         val layout = view.findViewById<CardView>(R.id.layout)
     }
@@ -37,8 +39,20 @@ class AdapterProduct(var activity: Activity,var data:ArrayList<Produk>):Recycler
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
+        val a = data[position]
+
+        val hargaAsli = Integer.valueOf(a.harga)
+        var harga = Integer.valueOf(a.harga)
+
+        if (a.discount != 0){
+            harga -= a.discount
+        }
+
+        holder.tvHargaAsli.text = Helper().changeRupiah(harga)
+        holder.tvHargaAsli.paintFlags = holder.tvHargaAsli.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         holder.tvNama.text = data[position].name
-        holder.tvHarga.text = Helper().changeRupiah(data[position].harga)
+        holder.tvHarga.text = Helper().changeRupiah(harga)
         //holder.imgProduk.setImageResource(data[position].image)
 
         val image = Config.productUrl + data[position].image

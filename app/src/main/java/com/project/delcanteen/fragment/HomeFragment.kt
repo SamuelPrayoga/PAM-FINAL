@@ -59,6 +59,8 @@ class HomeFragment : Fragment() {
         val layoutManager3 = LinearLayoutManager(activity)
         layoutManager3.orientation = LinearLayoutManager.HORIZONTAL
 
+
+
         rvProduct.adapter = AdapterProduct(requireActivity(), listProduk)
         rvProduct.layoutManager = layoutManager1
 
@@ -78,7 +80,12 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
                 val res = response.body()!!
                 if(res.success == 1){
-                    listProduk = res.produks
+                    var arrayProduk = ArrayList<Produk>()
+                    for (p in res.produks){
+                        p.discount = 500
+                        arrayProduk.add(p)
+                    }
+                    listProduk = arrayProduk
                     displayProduk()
                 }
             }

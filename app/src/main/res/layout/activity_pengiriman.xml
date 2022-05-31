@@ -186,7 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Pilih Metode Pengiriman"
+                    android:text="@string/pilih_metode_pengiriman"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -214,7 +214,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
-                    android:text="* Pilih metode pengiriman"
+                    android:text="Pilih Metode Pengiriman"
                     android:visibility="gone" />
 
                 <androidx.cardview.widget.CardView
