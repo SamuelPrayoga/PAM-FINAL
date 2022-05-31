@@ -53,6 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             edt_password.requestFocus()
             return
         }
+
         pb.visibility = View.VISIBLE
         ApiConfig.instanceRetrofit.register(edt_nama.text.toString(), edt_email.text.toString(), edt_phone.text.toString(), edt_noktp.text.toString(), edt_password.text.toString()).enqueue(object : Callback<ResponModel>{
 

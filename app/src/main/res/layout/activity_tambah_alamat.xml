@@ -29,12 +29,16 @@
                 android:background="@drawable/bg_btn_google">
 
                 <EditText
+                    android:id="@+id/edt_nama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:hint="Nama Lengkap*"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
@@ -45,12 +49,16 @@
                 android:background="@drawable/bg_btn_google">
 
                 <EditText
+                    android:id="@+id/edt_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:hint="Nomor telp*"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
@@ -61,12 +69,18 @@
                 android:background="@drawable/bg_btn_google">
 
                 <EditText
+                    android:id="@+id/edt_alamat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:hint="Jalan, No.RT/RW*"
-                    android:textSize="14dp"/>
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
@@ -77,12 +91,16 @@
                 android:background="@drawable/bg_btn_google">
 
                 <EditText
+                    android:id="@+id/edt_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@null"
-                    android:hint="Desa/kelurahan/apartemen"
-                    android:textSize="14dp"/>
+                    android:hint="Rumah/kost/kantor"
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
@@ -98,55 +116,70 @@
                     android:layout_margin="10dp"
                     android:background="@null"
                     android:hint="Alamat tambahan*"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/div_provinsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_btn_google">
+                android:background="@drawable/bg_btn_google"
+                android:visibility="gone">
 
                 <Spinner
+                    android:id="@+id/spn_provinsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textSize="14dp"/>
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/div_kota"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_btn_google">
+                android:background="@drawable/bg_btn_google"
+                android:visibility="gone">
 
                 <Spinner
+                    android:id="@+id/spn_kota"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/div_kecamatan"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_btn_google">
+                android:background="@drawable/bg_btn_google"
+                android:visibility="gone">
 
                 <Spinner
+                    android:id="@+id/spn_kecamatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
             </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/pb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -155,16 +188,21 @@
                 android:background="@drawable/bg_btn_google">
 
                 <EditText
+                    android:id="@+id/edt_kodePos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:hint="Kode Pos*"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
             <Button
+                android:id="@+id/btn_simpan"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
@@ -173,14 +211,11 @@
                 android:paddingHorizontal="15dp"
                 android:text="Simpan"
                 android:textAllCaps="false"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-
-
 
 
 </LinearLayout>
