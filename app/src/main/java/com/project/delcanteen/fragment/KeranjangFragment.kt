@@ -98,21 +98,8 @@ class KeranjangFragment : Fragment() {
 
         btnBayar.setOnClickListener {
 
-            if (s.getStatusLogin()) {
-                var isThereProduk = false
-                for (p in listProduk) {
-                    if (p.selected) isThereProduk = true
-                }
-                if (isThereProduk) {
-                    val intent = Intent(requireActivity(), PengirimanActivity::class.java)
-                    intent.putExtra("extra", "" + totalHarga)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(requireContext(), "tidak ada produk yang terpilih", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                requireActivity().startActivity(Intent(requireActivity(), MasukActivity::class.java))
-            }
+            startActivity(Intent(requireActivity(), PengirimanActivity::class.java))
+
         }
 
         cbAll.setOnClickListener {

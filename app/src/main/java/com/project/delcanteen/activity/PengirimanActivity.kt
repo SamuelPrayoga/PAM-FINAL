@@ -8,46 +8,36 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.project.delcanteen.MainActivity
 import com.project.delcanteen.R
 import com.project.delcanteen.adapter.AdapterKurir
-import com.project.delcanteen.app.ApiConfig
 import com.project.delcanteen.app.ApiConfigAlamat
 import com.project.delcanteen.helper.Helper
-import com.project.delcanteen.helper.SharedPref
-import com.project.delcanteen.model.Checkout
-import com.project.delcanteen.model.ResponModel
+import com.project.delcanteen.model.Alamat
 import com.project.delcanteen.model.rajaongkir.Costs
 import com.project.delcanteen.model.rajaongkir.ResponOngkir
+import com.project.delcanteen.model.rajaongkir.Result
 import com.project.delcanteen.room.MyDatabase
 import com.project.delcanteen.util.ApiKey
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_pengiriman.*
 import kotlinx.android.synthetic.main.activity_pengiriman.btn_tambahAlamat
+import kotlinx.android.synthetic.main.activity_tambah_alamat.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class PengirimanActivity : AppCompatActivity(){
-
     lateinit var myDB : MyDatabase
-    var totalHarga = 0
-
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pengiriman)
         Helper().setToolbar(this, toolbar, "Pengiriman")
-        myDB = MyDatabase.getInstance(this)!!
-
-        totalHarga = Integer.valueOf(intent.getStringExtra("extra")!!)
-        tv_totalBelanja.text = Helper().gantiRupiah(totalHarga)
+        val myDB = MyDatabase.getInstance(this)!!
         mainButton()
+
         setSpiner()
+
     }
 
     fun setSpiner(){
@@ -102,68 +92,7 @@ class PengirimanActivity : AppCompatActivity(){
         btn_tambahAlamat.setOnClickListener{
             startActivity(Intent(this, ListAlamatActivity::class.java))
         }
-
-        btn_bayar.setOnClickListener {
-            bayar()
-        }
     }
-
-    private fun bayar() {
-        val user = SharedPref(this).getUser()!!
-        val a = myDB.daoAlamat().getByStatus(true)!!
-
-        val listProduk = myDB.daoKeranjang().getAll() as ArrayList
-
-        var totalItem = 0
-        var totalHarga = 0
-        val produks = ArrayList<Checkout.Item>()
-        for (p in listProduk) {
-            if (p.selected) {
-                totalItem += p.jumlah
-                totalHarga += (p.jumlah * Integer.valueOf(p.harga))
-
-                val produk = Checkout.Item()
-                produk.id = "" + p.id
-                produk.total_item = "" + p.jumlah
-                produk.total_harga = "" + (p.jumlah * Integer.valueOf(p.harga))
-                produk.catatan = "catatan baru"
-                produks.add(produk)
-            }
-        }
-
-        val chekout = Checkout()
-        chekout.user_id = "" + user.id
-        chekout.total_item = "" + totalItem
-        chekout.total_harga = "" + totalHarga
-        chekout.name = a.name
-        chekout.phone = a.phone
-        chekout.jasa_pengiriaman = jasaKirim
-        chekout.ongkir = ongkir
-        chekout.kurir = kurir
-        chekout.total_transfer = "" + (totalHarga + Integer.valueOf(ongkir))
-        chekout.produks = produks
-
-        val json = Gson().toJson(chekout, Checkout::class.java)
-        Log.d("Respon:", "jseon:" + json)
-        val intent = Intent(this, PembayaranActivity::class.java)
-        intent.putExtra("extra", json)
-        startActivity(intent)
-
-   //ApiConfig.instanceRetrofit.Checkout(chekout).enqueue(object : Callback<ResponModel> {
-        //override fun onFailure(call: Call<ResponModel>, t: Throwable) {
-        //Toast.makeText(this@PengirimanActivity, "Error:"+t.message, Toast.LENGTH_SHORT).show()
-         //}
-
-         //override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
-        //val respon = response.body()!!
-        //if (respon.success == 1){
-        //Toast.makeText(this@PengirimanActivity, "Berhasil Kirim ke server ", Toast.LENGTH_SHORT).show()
-        //} else{
-        //Toast.makeText(this@PengirimanActivity, "Error:"+respon.message, Toast.LENGTH_SHORT).show()
-        //}
-       //}
-        //})
-}
 
     private fun getOngkir(kurir:String){
 
@@ -197,51 +126,17 @@ class PengirimanActivity : AppCompatActivity(){
             }
         })
     }
-    var ongkir = ""
-    var kurir = ""
-    var jasaKirim = ""
-    private fun displayOngkir(_kurir:String, arrayList : ArrayList<Costs>){
 
-        var arrayOngkir = ArrayList<Costs>()
-        for(i in arrayList.indices){
-            val ongkir = arrayList[i]
-            if (i == 0){
-                ongkir.isActive = true
-            }
-            arrayOngkir.add(ongkir)
-        }
-
-        setTotal(arrayOngkir[0].cost[0].value)
-        ongkir = arrayOngkir[0].cost[0].value
-        kurir = _kurir
-        jasaKirim = arrayOngkir[0].service
+    private fun displayOngkir(kurir:String, arrayList : ArrayList<Costs>){
 
         val layoutManager1 = LinearLayoutManager(this)
         layoutManager1.orientation = LinearLayoutManager.VERTICAL
-        var adapter: AdapterKurir? = null
-        adapter = AdapterKurir(arrayOngkir, kurir, object : AdapterKurir.Listeners{
+        rv_metode.adapter = AdapterKurir(arrayList, kurir, object : AdapterKurir.Listeners{
             override fun onClicked(data: Costs, index: Int) {
-                val newArrayOngkir = ArrayList<Costs>()
-                for (ongkir in arrayOngkir){
-                    ongkir.isActive = data.description == ongkir.description
-                    newArrayOngkir.add(ongkir)
-                }
-                arrayOngkir = newArrayOngkir
-                adapter!!.notifyDataSetChanged()
-                setTotal(data.cost[0].value)
-
-                ongkir = data.cost[0].value
-                kurir = _kurir
-                jasaKirim = data.service
             }
-        })
-        rv_metode.adapter = adapter
-        rv_metode.layoutManager = layoutManager1
-    }
 
-    fun setTotal(ongkir :String) {
-        tv_ongkir.text = Helper().gantiRupiah(ongkir)
-        tv_total.text = Helper().gantiRupiah("Integer.valueOf(ongkir)" + totalHarga)
+        })
+        rv_metode.layoutManager = layoutManager1
     }
 
     override fun onSupportNavigateUp(): Boolean {

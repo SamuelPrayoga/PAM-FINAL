@@ -31,6 +31,7 @@
         <activity android:name="com.project.delcanteen.activity.RegisterActivity" />
         <activity android:name=".activity.DetailProdukActivity" />
         <activity android:name=".activity.PembayaranActivity" />
+        <activity android:name=".activity.PengirimanActivity" />
 
     </application>
 
