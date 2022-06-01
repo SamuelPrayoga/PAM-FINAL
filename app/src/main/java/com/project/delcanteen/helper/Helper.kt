@@ -24,11 +24,5 @@ class Helper {
         activity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
-    fun gantiRupiah(value: String): CharSequence? {
-        TODO("Not yet implemented")
-    }
 
-    fun gantiRupiah(value: Int): CharSequence? {
-        TODO("Not yet implemented")
-    }
 }

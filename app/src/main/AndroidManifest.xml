@@ -32,6 +32,11 @@
         <activity android:name=".activity.DetailProdukActivity" />
         <activity android:name=".activity.PembayaranActivity" />
         <activity android:name=".activity.PengirimanActivity" />
+        <activity android:name="com.inyongtisto.tokoonline.activity.RiwayatActivity" />
+        <activity android:name=".activity.SuccessActivity" />
+        <activity android:name=".activity.TambahAlamatActivity" />
+        <activity android:name=".activity.DetailTransaksiActivity" />
+        <activity android:name=".activity.ListAlamatActivity" />
 
     </application>
 

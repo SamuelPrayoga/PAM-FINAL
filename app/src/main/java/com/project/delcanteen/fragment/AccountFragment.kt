@@ -48,7 +48,7 @@ class AccountFragment : Fragment() {
         btnLogout.setOnClickListener{
             s.setStatusLogin(false)
         }
-        btn_riwayat.setOnClickListener{
+        btnRiwayat.setOnClickListener{
             startActivity(Intent(requireActivity(), RiwayatActivity :: class.java))
         }
     }
