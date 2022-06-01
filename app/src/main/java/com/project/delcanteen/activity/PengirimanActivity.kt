@@ -8,24 +8,18 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.project.delcanteen.MainActivity
 import com.project.delcanteen.R
 import com.project.delcanteen.adapter.AdapterKurir
-import com.project.delcanteen.app.ApiConfig
 import com.project.delcanteen.app.ApiConfigAlamat
 import com.project.delcanteen.helper.Helper
 import com.project.delcanteen.helper.SharedPref
-import com.project.delcanteen.model.Checkout
-import com.project.delcanteen.model.ResponModel
+import com.project.delcanteen.model.Chekout
 import com.project.delcanteen.model.rajaongkir.Costs
 import com.project.delcanteen.model.rajaongkir.ResponOngkir
 import com.project.delcanteen.room.MyDatabase
 import com.project.delcanteen.util.ApiKey
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_pengiriman.*
 import kotlinx.android.synthetic.main.activity_pengiriman.btn_tambahAlamat
 import kotlinx.android.synthetic.main.toolbar_custom.*
@@ -87,7 +81,7 @@ class PengirimanActivity : AppCompatActivity(){
             val a = myDB.daoAlamat().getByStatus(true)!!
             tv_nama.text = a.name
             tv_phone.text = a.phone
-            tv_alamat.text = a.alamat + ", " + a.kota + "," + a.kecamatan + "," + a.kodepos + ", (" + a.type + ")"
+            tv_alamat.text = a.alamat + ", " + a.kota + "," + "," + a.kodepos + ", (" + a.type + ")"
             btn_tambahAlamat.text = "Ubah alamat"
 
             getOngkir("JNE")
@@ -116,13 +110,13 @@ class PengirimanActivity : AppCompatActivity(){
 
         var totalItem = 0
         var totalHarga = 0
-        val produks = ArrayList<Checkout.Item>()
+        val produks = ArrayList<Chekout.Item>()
         for (p in listProduk) {
             if (p.selected) {
                 totalItem += p.jumlah
                 totalHarga += (p.jumlah * Integer.valueOf(p.harga))
 
-                val produk = Checkout.Item()
+                val produk = Chekout.Item()
                 produk.id = "" + p.id
                 produk.total_item = "" + p.jumlah
                 produk.total_harga = "" + (p.jumlah * Integer.valueOf(p.harga))
@@ -131,7 +125,7 @@ class PengirimanActivity : AppCompatActivity(){
             }
         }
 
-        val chekout = Checkout()
+        val chekout = Chekout()
         chekout.user_id = "" + user.id
         chekout.total_item = "" + totalItem
         chekout.total_harga = "" + totalHarga
@@ -140,10 +134,11 @@ class PengirimanActivity : AppCompatActivity(){
         chekout.jasa_pengiriaman = jasaKirim
         chekout.ongkir = ongkir
         chekout.kurir = kurir
+        chekout.detail_lokasi = tv_alamat.text.toString()
         chekout.total_transfer = "" + (totalHarga + Integer.valueOf(ongkir))
         chekout.produks = produks
 
-        val json = Gson().toJson(chekout, Checkout::class.java)
+        val json = Gson().toJson(chekout, Chekout::class.java)
         Log.d("Respon:", "jseon:" + json)
         val intent = Intent(this, PembayaranActivity::class.java)
         intent.putExtra("extra", json)

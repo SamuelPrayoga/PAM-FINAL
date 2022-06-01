@@ -1,9 +1,8 @@
 package com.project.delcanteen.app
 
-import com.project.delcanteen.model.Checkout
+import com.project.delcanteen.model.Chekout
 import com.project.delcanteen.model.ResponModel
 import com.project.delcanteen.model.rajaongkir.ResponOngkir
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -28,7 +27,7 @@ interface ApiService {
 
     @POST("Checkout")
     fun Checkout(
-        @Body data : Checkout
+        @Body data : Chekout
     ):Call<ResponModel>
 
     @GET("produk")
@@ -58,5 +57,9 @@ interface ApiService {
         @Field("weight") weight :Int,
         @Field("courier") courier :String
     ):Call<ResponOngkir>
+    @GET("chekout/user/{id}")
+    fun getRiwayat(
+        @Path("id") id: Int
+    ):Call<ResponModel>
 
 }

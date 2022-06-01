@@ -6,10 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.TextView
+import com.inyongtisto.tokoonline.activity.RiwayatActivity
 import com.project.delcanteen.R
 import com.project.delcanteen.activity.LoginActivity
 import com.project.delcanteen.helper.SharedPref
+import kotlinx.android.synthetic.main.fragment_account.*
 
 class AccountFragment : Fragment() {
     lateinit var s:SharedPref
@@ -18,6 +22,7 @@ class AccountFragment : Fragment() {
     lateinit var tvEmail:TextView
     lateinit var tvPhone:TextView
     lateinit var tvNoktp:TextView
+    lateinit var btnRiwayat:RelativeLayout
 
 
     override fun onCreateView(
@@ -35,9 +40,17 @@ class AccountFragment : Fragment() {
             s.setStatusLogin(false)
         }
 
+        mainButton()
         setData()
-
         return view
+    }
+    fun mainButton(){
+        btnLogout.setOnClickListener{
+            s.setStatusLogin(false)
+        }
+        btn_riwayat.setOnClickListener{
+            startActivity(Intent(requireActivity(), RiwayatActivity :: class.java))
+        }
     }
 
     fun setData(){
@@ -62,5 +75,6 @@ class AccountFragment : Fragment() {
         tvEmail = view.findViewById(R.id.tv_email)
         tvPhone = view.findViewById(R.id.tv_phone)
         tvNoktp = view.findViewById(R.id.tv_noktp)
+        btnRiwayat = view.findViewById(R.id.btn_riwayat)
     }
 }
