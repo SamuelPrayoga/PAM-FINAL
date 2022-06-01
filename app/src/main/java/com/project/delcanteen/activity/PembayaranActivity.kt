@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog
 import com.project.delcanteen.R
 import com.project.delcanteen.adapter.AdapterBank
 import com.project.delcanteen.app.ApiConfig
@@ -16,6 +17,9 @@ import com.project.delcanteen.model.ResponModel
 import com.project.delcanteen.model.rajaongkir.Transaksi
 import kotlinx.android.synthetic.main.activity_pembayaran.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PembayaranActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,30 +51,51 @@ class PembayaranActivity : AppCompatActivity() {
         val chekout = Gson().fromJson(json, Chekout::class.java)
         chekout.bank = bank.nama
 
-        ApiConfig.instanceRetrofit.Checkout(chekout).enqueue(object :
-            retrofit2.Callback<ResponModel> {
-            override fun onFailure(call: retrofit2.Call<ResponModel>, t: Throwable) {
-                //Toast.makeText(this@PembayaranActivity, "Error:"+t.message, Toast.LENGTH_SHORT).show()
+        val loading = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+        loading.setTitleText("Loading...").show()
+
+        ApiConfig.instanceRetrofit.Checkout(chekout).enqueue(object : Callback<ResponModel> {
+            override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+                loading.dismiss()
+                error(t.message.toString())
+//                Toast.makeText(this, "Error:" + t.message, Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: retrofit2.Call<ResponModel>, response: retrofit2.Response<ResponModel>) {
+            override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
+                loading.dismiss()
+                if (!response.isSuccessful) {
+                    error(response.message())
+                    return
+                }
+
                 val respon = response.body()!!
-                if (respon.success == 1){
+                if (respon.success == 1) {
 
                     val jsBank = Gson().toJson(bank, Bank::class.java)
                     val jsTransaksi = Gson().toJson(respon.transaksi, Transaksi::class.java)
+                    val jsChekout = Gson().toJson(chekout, Chekout::class.java)
 
                     val intent = Intent(this@PembayaranActivity, SuccessActivity::class.java)
                     intent.putExtra("bank", jsBank)
                     intent.putExtra("transaksi", jsTransaksi)
+                    intent.putExtra("chekout", jsChekout)
                     startActivity(intent)
 
-                } else{
-                    Toast.makeText(this@PembayaranActivity, "Error:"+respon.message, Toast.LENGTH_SHORT).show()
+                } else {
+                    error(respon.message)
+                    Toast.makeText(this@PembayaranActivity, "Error:" + respon.message, Toast.LENGTH_SHORT).show()
                 }
             }
         })
     }
+
+    fun error(pesan: String) {
+        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText("Oops...")
+            .setContentText(pesan)
+            .show()
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()

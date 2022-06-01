@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId 'com.project.kantin.del.kelompok02'
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -61,6 +61,9 @@ dependencies {
 
     //image displayed
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Sweet Alert
+    implementation 'com.github.thomper:sweet-alert-dialog:1.4.0'
 
     //SQLite
     def room_version = "2.2.6"
