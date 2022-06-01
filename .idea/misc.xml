@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/drawable-v24/ic_baseline_edit_24.xml" value="0.199" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.199" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_baru.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_list_alamat.xml" value="0.264" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_pengiriman.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/activity_tambah_alamat.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/item_alamat.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/item_product.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/item_spiner.xml" value="0.27447916666666666" />
+        <entry key="..\:/068_Putri Kesuma Indah Jawak/Semester 4/1142203 - Mobile Application Development/proyek UAS/Kantin-Del/app/src/main/res/layout/toolbar.xml" value="0.27447916666666666" />
         <entry key="..\:/3rd semester/PAM/BigProject/DelCanteen/DelCanteen/app/src/main/res/layout/activity_baru.xml" value="0.13020833333333334" />
         <entry key="..\:/3rd semester/PAM/BigProject/DelCanteen/DelCanteen/app/src/main/res/layout/activity_login.xml" value="0.17300724637681159" />
         <entry key="..\:/3rd semester/PAM/BigProject/DelCanteen/DelCanteen/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
@@ -22,10 +32,18 @@
         <entry key="..\:/KULIAH IT DEL/SEMESTER IV/PAM/TUGAS-BESAR-PAM/DelCanteen/app/src/main/res/layout/toolbar.xml" value="0.26875" />
         <entry key="..\:/KULIAH IT DEL/SEMESTER IV/PAM/TUGAS-BESAR-PAM/DelCanteen/app/src/main/res/layout/toolbar_custom.xml" value="0.26875" />
         <entry key="..\:/KULIAH IT DEL/SEMESTER IV/PAM/TUGAS-BESAR-PAM/DelCanteen/app/src/main/res/xml/config_network.xml" value="0.26875" />
-        <entry key="..\:/Semester 4/PAM/Project/PAM-FINAL/app/src/main/res/layout/activity_detail_transaksi.xml" value="0.20244565217391305" />
-        <entry key="..\:/Semester 4/PAM/Project/PAM-FINAL/app/src/main/res/layout/item_riwayat.xml" value="0.27447916666666666" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/Baruu/Lagi/app/src/main/res/layout/activity_detail_transaksi.xml" value="0.128" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/Baruu/Lagi/app/src/main/res/layout/activity_riwayat.xml" value="0.1" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/Baruu/Lagi/app/src/main/res/layout/activity_success.xml" value="0.4" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/Baruu/Lagi/app/src/main/res/layout/fragment_account.xml" value="0.264" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/Baruu/Lagi/app/src/main/res/layout/item_produk_transaksi.xml" value="0.264" />
+        <entry key="..\:/kuliahhh/semester 4/PAM/Baruu/Lagi/app/src/main/res/layout/item_riwayat.xml" value="0.536" />
         <entry key="..\:/kuliahhh/semester 4/PAM/ProyekKantin/app/src/main/res/layout/fragment_keranjang.xml" value="0.1" />
         <entry key="..\:/kuliahhh/semester 4/PAM/ProyekKantin/app/src/main/res/layout/item_keranjang.xml" value="0.1" />
+        <entry key="..\:/xampp/htdocs/pam/app/src/main/res/layout/activity_pembayaran.xml" value="0.1" />
+        <entry key="..\:/xampp/htdocs/pam/app/src/main/res/layout/activity_pengiriman.xml" value="0.1" />
+        <entry key="..\:/xampp/htdocs/pam/app/src/main/res/layout/item_bank.xml" value="0.1" />
+        <entry key="..\:/xampp/htdocs/pam/app/src/main/res/layout/item_kurir.xml" value="0.16077898550724637" />
       </map>
     </option>
   </component>

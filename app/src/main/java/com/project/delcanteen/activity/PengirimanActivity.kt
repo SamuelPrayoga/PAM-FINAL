@@ -39,7 +39,7 @@ class PengirimanActivity : AppCompatActivity(){
         myDB = MyDatabase.getInstance(this)!!
 
         totalHarga = Integer.valueOf(intent.getStringExtra("extra")!!)
-        tv_totalBelanja.text = Helper().gantiRupiah(totalHarga)
+        tv_totalBelanja.text = Helper().changeRupiah(totalHarga)
         mainButton()
         setSpiner()
     }
@@ -55,7 +55,7 @@ class PengirimanActivity : AppCompatActivity(){
         spn_kurir.adapter = adapter
         spn_kurir.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
 
@@ -168,28 +168,26 @@ class PengirimanActivity : AppCompatActivity(){
         val destination = "" + alamat!!.id_kota.toString()
         val berat = 1000
 
-        ApiConfigAlamat.instanceRetrofit.ongkir(ApiKey.key, origin, destination, berat, kurir.toLowerCase()).enqueue(object :
-            Callback<ResponOngkir> {
-            override fun onFailure(call: Call<ResponOngkir>, t: Throwable) {
-                Log.d("Error", "gagal memuat data:" + t.message)
-            }
-
+        ApiConfigAlamat.instanceRetrofit.ongkir(ApiKey.key, origin, destination, berat, kurir.toLowerCase()).enqueue(object : Callback<ResponOngkir> {
             override fun onResponse(call: Call<ResponOngkir>, response: Response<ResponOngkir>) {
+                if (response.isSuccessful) {
 
-                if (response.isSuccessful){
-
-                    Log.d("Succes", "berhasil memuat data")
+                    Log.d("Success", "berhasil memuat data")
                     val result = response.body()!!.rajaongkir.result
-                    if (result.isNotEmpty()){
+                    if (result.isNotEmpty()) {
                         displayOngkir(result[0].code.toUpperCase(), result[0].costs)
                     }
 
 
-                }else{
+                } else {
                     Log.d("Error", "gagal memuat data:" + response.message())
-
                 }
             }
+
+            override fun onFailure(call: Call<ResponOngkir>, t: Throwable) {
+                Log.d("Error", "gagal memuat data:" + t.message)
+            }
+
         })
     }
     var ongkir = ""
@@ -235,8 +233,8 @@ class PengirimanActivity : AppCompatActivity(){
     }
 
     fun setTotal(ongkir :String) {
-        tv_ongkir.text = Helper().gantiRupiah(ongkir)
-        tv_total.text = Helper().gantiRupiah("Integer.valueOf(ongkir)" + totalHarga)
+        tv_ongkir.text = Helper().changeRupiah(ongkir)
+        tv_total.text = Helper().changeRupiah(Integer.valueOf(ongkir) + totalHarga)
     }
 
     override fun onSupportNavigateUp(): Boolean {

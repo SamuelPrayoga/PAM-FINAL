@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.delcanteen.R
+import com.project.delcanteen.activity.MasukActivity
 import com.project.delcanteen.activity.PengirimanActivity
 import com.project.delcanteen.adapter.AdapterKeranjang
 import com.project.delcanteen.helper.Helper
@@ -95,7 +97,23 @@ class CartFragment : Fragment() {
         }
 
         btnBayar.setOnClickListener {
-            startActivity(Intent(requireActivity(), PengirimanActivity::class.java))
+
+            if (s.getStatusLogin()) {
+                var isThereProduk = false
+                for (p in listProduk) {
+                    if (p.selected) isThereProduk = true
+                }
+                if (isThereProduk) {
+                    val intent = Intent(requireActivity(), PengirimanActivity::class.java)
+                    intent.putExtra("extra", "" + totalHarga)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(requireContext(), "tidak ada produk yang terpilih", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                requireActivity().startActivity(Intent(requireActivity(), MasukActivity::class.java))
+            }
+
         }
 
         cbAll.setOnClickListener {

@@ -113,6 +113,7 @@ class KeranjangFragment : Fragment() {
             } else {
                 requireActivity().startActivity(Intent(requireActivity(), MasukActivity::class.java))
             }
+
         }
 
         cbAll.setOnClickListener {

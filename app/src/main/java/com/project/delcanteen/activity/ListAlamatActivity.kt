@@ -34,7 +34,7 @@ class ListAlamatActivity : AppCompatActivity() {
     }
 
     private fun displayAlamat(){
-        val myDb = MyDatabase.getInstance(this)!!
+ //   val myDb = MyDatabase.getInstance(this)!!
         val arrayList = myDb.daoAlamat().getAll() as ArrayList
 
         if (arrayList.isEmpty()) div_kosong.visibility = View.VISIBLE
@@ -57,7 +57,7 @@ class ListAlamatActivity : AppCompatActivity() {
 
     private fun updateActive(dataActive: Alamat, dataNonActive: Alamat) {
 
-        CompositeDisposable().add(Observable.fromCallable { myDb!!.daoAlamat().update(dataActive) }
+        CompositeDisposable().add(Observable.fromCallable { myDb.daoAlamat().update(dataActive) }
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
@@ -67,7 +67,7 @@ class ListAlamatActivity : AppCompatActivity() {
 
     private fun updateNonActive(data: Alamat) {
         data.isSelected = true
-        CompositeDisposable().add(Observable.fromCallable { myDb!!.daoAlamat().update(data) }
+        CompositeDisposable().add(Observable.fromCallable { myDb.daoAlamat().update(data) }
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
