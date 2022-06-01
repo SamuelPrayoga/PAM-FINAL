@@ -17,6 +17,7 @@ import com.project.delcanteen.R
 import com.project.delcanteen.activity.DetailProdukActivity
 import com.project.delcanteen.helper.Helper
 import com.project.delcanteen.model.Alamat
+import com.project.delcanteen.model.Bank
 import com.project.delcanteen.model.Produk
 import com.project.delcanteen.model.rajaongkir.Costs
 import com.project.delcanteen.model.rajaongkir.Result
@@ -29,19 +30,16 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlin.collections.ArrayList
 
-class AdapterKurir(var data:ArrayList<Costs>, var kurir:String, var listener: Listeners):RecyclerView.Adapter<AdapterKurir.Holder>() {
+class AdapterBank(var data:ArrayList<Bank>, var listener: Listeners):RecyclerView.Adapter<AdapterBank.Holder>() {
 
     class Holder(view: View):RecyclerView.ViewHolder(view){
         val tvNama = view.findViewById<TextView>(R.id.tv_nama)
-        val tvlamaPengiriman = view.findViewById<TextView>(R.id.tv_lamaPengiriman)
-        val tvBerat = view.findViewById<TextView>(R.id.tv_berat)
-        val tvHarga = view.findViewById<TextView>(R.id.tv_harga)
         val layout = view.findViewById<LinearLayout>(R.id.layout)
-        val rd = view.findViewById<RadioButton>(R.id.rd)
+        val image = view.findViewById<ImageView>(R.id.image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_kurir, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_bank, parent, false)
         return Holder(view)
     }
 
@@ -52,29 +50,16 @@ class AdapterKurir(var data:ArrayList<Costs>, var kurir:String, var listener: Li
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val a = data[position]
-
-        holder.rd.isChecked = a.isActive
-        holder.tvNama.text = kurir + " " + a.service
-        val cost = a.cost[0]
-        holder.tvlamaPengiriman.text = cost.etd + "hari kerja"
-        holder.tvHarga.text = Helper().changeRupiah(cost.value)
-        holder.tvBerat.text = "1 kg x " + Helper().changeRupiah(cost.value)
-//        holder.tvAlamat.text = a.alamat + ", " + a.kota + "," + a.kecamatan + "," + a.kodepos + ", (" + a.type + ")"
-//
-        holder.rd.setOnClickListener{
-            a.isActive = true
+        holder.tvNama.text = a.nama
+        holder.image.setImageResource(a.image)
+        holder.layout.setOnClickListener {
             listener.onClicked(a, holder.adapterPosition)
         }
-
-//        holder.layout.setOnClickListener {
-//            a.isSelected = true
-//            listener.onClicked(a)
-//        }
     }
 
 
     interface Listeners{
-        fun onClicked(data:Costs, index: Int)
+        fun onClicked(data:Bank, index: Int)
     }
 
 }

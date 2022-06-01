@@ -1,5 +1,6 @@
 package com.project.delcanteen.app
 
+import com.project.delcanteen.model.Checkout
 import com.project.delcanteen.model.ResponModel
 import com.project.delcanteen.model.rajaongkir.ResponOngkir
 import okhttp3.ResponseBody
@@ -23,6 +24,11 @@ interface ApiService {
     fun login(
         @Field("email") email :String,
         @Field("password") password :String
+    ):Call<ResponModel>
+
+    @POST("Checkout")
+    fun Checkout(
+        @Body data : Checkout
     ):Call<ResponModel>
 
     @GET("produk")
