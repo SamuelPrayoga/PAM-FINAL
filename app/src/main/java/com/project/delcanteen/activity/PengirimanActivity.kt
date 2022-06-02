@@ -98,7 +98,7 @@ class PengirimanActivity : AppCompatActivity(){
         }
 
         btn_bayar.setOnClickListener {
-            bayar()
+            startActivity(Intent(this, PembayaranActivity::class.java))
         }
     }
 

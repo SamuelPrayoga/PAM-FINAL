@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
                 if(res.success == 1){
                     var arrayProduk = ArrayList<Produk>()
                     for (p in res.produks){
-                        p.discount = 500
+                        p.discount = 1500
                         arrayProduk.add(p)
                     }
                     listProduk = arrayProduk

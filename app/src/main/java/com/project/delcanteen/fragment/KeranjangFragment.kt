@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.delcanteen.R
 import com.project.delcanteen.activity.MasukActivity
+import com.project.delcanteen.activity.PembayaranActivity
 import com.project.delcanteen.activity.PengirimanActivity
 import com.project.delcanteen.adapter.AdapterKeranjang
 import com.project.delcanteen.helper.Helper
@@ -104,7 +105,7 @@ class KeranjangFragment : Fragment() {
                     if (p.selected) isThereProduk = true
                 }
                 if (isThereProduk) {
-                    val intent = Intent(requireActivity(), PengirimanActivity::class.java)
+                    val intent = Intent(requireActivity(), PembayaranActivity::class.java)
                     intent.putExtra("extra", "" + totalHarga)
                     startActivity(intent)
                 } else {
